@@ -44,7 +44,18 @@ int address_elements_count(char *str){
             else if(cl[i].command_length==3){
                 return word_length_judge(list[2],list[3],list[4]);
             }
-            //DS,DC,IN,OUT,RPUSH,RPOPのとき
+            //IN,OUTのとき
+            else if(cl[i].command_length==12){
+                return cl[i].command_length;
+            }
+            //DSのとき
+            else if(cl[i].command_length==4){
+                int dsnum;
+                //数値を得る
+                dsnum=ds_num(list[2]);
+                return dsnum;
+            }
+            //DC,RPUSH,RPOPのとき
             else{
                 return cl[i].command_length;
             }

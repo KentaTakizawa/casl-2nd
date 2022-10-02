@@ -38,11 +38,11 @@ CL cl[]={
     {"START",0,"XX","XX"},
     {"END",0,"XX","XX"},
     {"DS",4,"XX","XX"},
-    {"DC",4,"XX","XX"},
-    {"IN",4,"XX","XX"},
-    {"OUT",4,"XX","XX"},
-    {"RPUSH",4,"XX","XX"},
-    {"RPOP",4,"XX","XX"},
+    {"DC",5,"XX","XX"},
+    {"IN",12,"XX","XX"},
+    {"OUT",12,"XX","XX"},
+    {"RPUSH",20,"XX","XX"},
+    {"RPOP",21,"XX","XX"},
 };
 
 

@@ -7,7 +7,7 @@
 #include "data.h"
 #include "function_list.h"
 
-char *structure_creation(PF *pf){
+void structure_creation(PF *pf){
     //ファイル名を格納する文字列を作成
     char *first_filename;
     char *filename;
@@ -31,15 +31,21 @@ char *structure_creation(PF *pf){
             continue;
         }
         fclose(fp);
+        //追加する構造体を一度格納する
+        PF *pf1;
+        pf1 = (PF *)malloc(sizeof(PF));
+        //構造体の初期化
+        init_list(pf1);
         //構造体にデータを格納していく
-        store_structure(pf,filename);
+        store_structure(pf1,filename);
+        //リテラルをラベル名として構造体に登録する
+        literal(pf1);
+        //エラー判定する
+        if(error_check_structure(pf1)==FALSE){
+            continue;
+        }
+        //エラーがなければ格納する
+        new_registration_structure(pf,pf1);
         count++;
     }
-    //リテラルをラベル名として構造体に登録する
-    literal(pf);
-    while(pf->next!=NULL){
-        pf = pf->next;
-        printf("%s %s %d\n",pf->label,pf->command,pf->necessary_address);
-    }
-    return filename;
 }

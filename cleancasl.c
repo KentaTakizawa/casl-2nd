@@ -9,11 +9,14 @@
 
 int main(void){
     //アセンブリ言語のデータ構造体の作成
-    PF pf;
+    PF *pf;
+    pf = (PF *)malloc(sizeof(PF));
     //構造体の初期化
-    init_list(&pf);
+    init_list(pf);
     //構造体を作成する
-    structure_creation(&pf);
+    structure_creation(pf);
+    //機械語に変換する
+
 
     return TRUE;
 }
