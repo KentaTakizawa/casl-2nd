@@ -55,7 +55,29 @@ int address_elements_count(char *str){
                 dsnum=ds_num(list[2]);
                 return dsnum;
             }
-            //DC,RPUSH,RPOPのとき
+            //DCのとき
+            else if(cl[i].command_length==5){
+                //16進数表記のとき
+                if(list[2][0]=='#'){
+                    return 2;
+                }
+                //10進数表記
+                else if((list[2][0]=='-')||(isdigit(list[2][0]!=0))){
+                    return 2;
+                }
+                //文字列表記
+                else if(list[2][0]=='\''){
+                    int dc_len;
+                    dc_len = strlen(list[2])-1;
+                    return dc_len;
+                }
+                //ラベル
+                else{
+                    return 2;
+                }
+
+            }
+            //RPUSH,RPOPのとき
             else{
                 return cl[i].command_length;
             }

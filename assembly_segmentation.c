@@ -44,10 +44,14 @@ char *assembly_segmentation(char *str){
             }
         }
         //オペランドの間はコンマで区切られている
-        else{
+        else if(count<4){
             if((ptr[count]=strtok(NULL,","))==NULL){
                 break;
             }
+        }
+        else{
+            ptr[count]=strtok(NULL,";");
+            break;
         }
         //文字列のスペースを削除
         remove_space(ptr[count],strlen(ptr[count]));
@@ -55,7 +59,6 @@ char *assembly_segmentation(char *str){
     }
     //コメントを削除
     delete_comment(ptr,count);
-
     //構造体に必要なデータを作成
     //ラベル名,コマンド,オペランド1,オペランド2,オペランド3
     list = structure_data_creation(ptr);

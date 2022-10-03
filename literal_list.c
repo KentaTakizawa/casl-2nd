@@ -14,7 +14,7 @@ char *literal_list(char *str,char *str1){
     strcat(list,str);
     strcat(list,",");
     //リテラルの命令をDSで登録
-    strcat(list,"DS");
+    strcat(list,"DC");
     strcat(list,",");
     //リテラルの中身を登録
     strcat(list,str1);

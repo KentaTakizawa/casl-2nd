@@ -16,7 +16,9 @@ int main(void){
     //構造体を作成する
     structure_creation(pf);
     //機械語に変換する
-
-
+    while(pf->next!=NULL){
+        pf = pf->next;
+        printf("%s %s %d\n",pf->label,pf->command,pf->necessary_address);
+    }
     return TRUE;
 }
